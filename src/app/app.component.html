@@ -1,0 +1,81 @@
+<!-- search bar -->
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search city" name="city" [(ngModel)]="cityName">
+  </form>
+</div>
+
+<div class="container" *ngIf="weatherData">
+  <!-- displays city and current temp -->
+  <div class="upper-data">
+    <!-- hot and cold images -->
+    <img src="../assets/hot-ashim-d-silva-bmveAmxzfNY-unsplash.jpg" alt="Hot weather image" *ngIf="weatherData.temp > 15">
+    <img src="../assets/cold-benjamin-voros-U-Kty6HxcQc-unsplash.jpg" alt="Cold weather image" *ngIf="weatherData.temp <= 15">
+    <!-- city and current temp -->
+    <div class="weather-data">
+      <div class="location">{{ lastCityName.toUpperCase() }}</div>
+      <div class="temperature">{{ (weatherData.temp * 9/5) + 32 | number: '1.0-0' }}°F</div>
+    </div>
+
+  </div>
+  <!-- displays additional weather info -->
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Details
+    </div>
+
+    <div class="more-info-container">
+      <!-- minimum temp -->
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/min-temp.png" alt="Minimum temperature">
+          <a href="https://www.flaticon.com/free-icons/low-temperature" title="low temperature icons" target="_blank">
+            <span>min</span>
+          </a>
+        </div>
+        <div class="info-block-value">
+          {{ (weatherData.min_temp * 9/5) + 32 | number: '1.0-0' }}°F
+        </div>
+      </div>
+      <!-- maximum temp -->
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/max-temp.png" alt="Maximum temperature">
+          <a href="https://www.flaticon.com/free-icons/fever" title="fever icons" target="_blank">
+            <span>max</span>
+          </a>
+        </div>
+        <div class="info-block-value">
+          {{ (weatherData.max_temp * 9/5) + 32 | number: '1.0-0' }}°F
+        </div>
+      </div>
+      <!-- humidity percentage -->
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humidity.png" alt="Humidity">
+          <a href="https://www.flaticon.com/free-icons/humidity" title="humidity icons" target="_blank">
+            <span>hum</span>
+          </a>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.humidity }}%
+        </div>
+      </div>
+      <!-- wind speed -->
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png" alt="Wind speed">
+          <a href="https://www.flaticon.com/free-icons/air-quality" title="air quality icons" target="_blank">
+            <span>wind</span>
+          </a>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.wind_speed / 1.609 | number: '1.2-2' }} mph
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+
+</div>
