@@ -10,6 +10,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
+  // GETs weather data from Weather by API-Ninjas (RapidAPI)
   getWeatherData(cityName: string): Observable<WeatherData> {
     return this.http.get<WeatherData>('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather', {
       headers: new HttpHeaders()

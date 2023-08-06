@@ -16,7 +16,9 @@ export class AppComponent implements OnInit {
 
   // initial values
   cityName: string = 'Portland';
+  // to embed the searched city name in html
   lastCityName: string = '';
+
   // stores weather data info
   weatherData?: WeatherData;
 
